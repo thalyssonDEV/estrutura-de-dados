@@ -15,10 +15,12 @@ class Menu {
         }
 };
 
+
 typedef struct {
 	float score;
 	char name[40];
 	} TAluno;
+
 
 void awaitInput(void) {
     printf("\nPressione ENTER Para Continuar...");
@@ -33,6 +35,7 @@ void awaitInput(void) {
     #define clear() system("clear") // Para Linux, macOS ou sistemas Unix
 #endif
 
+
 void insertStudents(TAluno *arrayStudents, TAluno alunoInfo, int i) {
     cout << "Enter " << i + 1 << "°" << "Student Name: " << endl;
     scanf("%39s", alunoInfo.name);
@@ -43,12 +46,14 @@ void insertStudents(TAluno *arrayStudents, TAluno alunoInfo, int i) {
     arrayStudents[i].score = alunoInfo.score;
 }
 
+
 void removeStudents(TAluno *arrayStudents, int numberStudentsToRemove, int &studentsNumber) {
     for (int i = numberStudentsToRemove - 1; i < studentsNumber - 1; i++) {
         arrayStudents[i] = arrayStudents[i + 1];
     }
     studentsNumber--;
 }
+
 
 void showStudents(TAluno *arrayStudantes, TAluno alunoInfo, int studentsNumber) {
     for (int i{}; i < studentsNumber; i++) {
@@ -59,6 +64,7 @@ void showStudents(TAluno *arrayStudantes, TAluno alunoInfo, int studentsNumber) 
     }
 }
 
+
 int main() {
     clear();
     int studentsNumber;
@@ -67,7 +73,7 @@ int main() {
     cout << "Enter Students Number: " << endl;
     scanf("%d", &studentsNumber);
 
-    TAluno* arrayStudents = new TAluno[studentsNumber];
+    TAluno *arrayStudents = new TAluno[studentsNumber];
 
     for (int i{}; i < studentsNumber; i++) {
         insertStudents(arrayStudents, alunoInfo, i);
@@ -101,6 +107,7 @@ int main() {
             }
 
             case 0: {
+                delete[] arrayStudents;
                 exit(0);
             }
         }
